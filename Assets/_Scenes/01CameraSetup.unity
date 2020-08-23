@@ -293,7 +293,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b2adc974ca9fcb849bbd77690db0835e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cameraSlider: {fileID: 1937461627}
   targetCamera: 3
 --- !u!1 &81769673
 GameObject:
@@ -726,7 +725,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d2b5b82aeebeeba48b286c8cfe5b4bf2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_camera: {fileID: 1963827804}
+  mBoundedCamera: 1
 --- !u!1 &458673382
 GameObject:
   m_ObjectHideFlags: 0
@@ -1405,7 +1404,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b2adc974ca9fcb849bbd77690db0835e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cameraSlider: {fileID: 389675753}
   targetCamera: 1
 --- !u!1 &714828798
 GameObject:
@@ -1535,7 +1533,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b2adc974ca9fcb849bbd77690db0835e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cameraSlider: {fileID: 746419261}
   targetCamera: 4
 --- !u!1 &746419261
 GameObject:
@@ -1639,7 +1636,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d2b5b82aeebeeba48b286c8cfe5b4bf2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_camera: {fileID: 1392966839}
+  mBoundedCamera: 4
 --- !u!1 &849175055
 GameObject:
   m_ObjectHideFlags: 0
@@ -1778,6 +1775,7 @@ GameObject:
   - component: {fileID: 861691753}
   - component: {fileID: 861691752}
   - component: {fileID: 861691756}
+  - component: {fileID: 861691757}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -1886,6 +1884,28 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_AllowSwitchOff: 0
+--- !u!114 &861691757
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 861691751}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a45f5824e8b655a4e8a9317eac65070e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mToggleGO:
+  - {fileID: 705996728}
+  - {fileID: 980427583}
+  - {fileID: 54254444}
+  - {fileID: 744651341}
+  mSliderGO:
+  - {fileID: 389675753}
+  - {fileID: 1757996449}
+  - {fileID: 1937461627}
+  - {fileID: 746419261}
 --- !u!1 &895064500
 GameObject:
   m_ObjectHideFlags: 0
@@ -2114,7 +2134,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b2adc974ca9fcb849bbd77690db0835e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cameraSlider: {fileID: 1757996449}
   targetCamera: 2
 --- !u!1 &984318066
 GameObject:
@@ -3740,7 +3759,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d2b5b82aeebeeba48b286c8cfe5b4bf2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_camera: {fileID: 101871359}
+  mBoundedCamera: 2
 --- !u!1 &1798578812
 GameObject:
   m_ObjectHideFlags: 0
@@ -4189,7 +4208,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d2b5b82aeebeeba48b286c8cfe5b4bf2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_camera: {fileID: 1871951057}
+  mBoundedCamera: 3
 --- !u!1 &1963827804
 GameObject:
   m_ObjectHideFlags: 0

@@ -7,21 +7,19 @@ public class CameraManager : MonoBehaviour
     public GameObject[] cameras;
     private int currentCameraIndex;
 
+    private UIMain uiMain;
+
     // Start is called before the first frame update
     void Start()
     {
-        currentCameraIndex = 0;
+        uiMain = FindObjectOfType<UIMain>();
+
+        currentCameraIndex = 0;        
 
         for (int i = 0; i < cameras.Length; i++)
         {
-            cameras[i].gameObject.SetActive(false);
+            SetToggleForCamera(i + 1, currentCameraIndex == i);
         }
-
-        if (cameras.Length > 0)
-        {
-            cameras[0].gameObject.SetActive(true);
-            Debug.Log("currentCamera: " + currentCameraIndex);
-        }        
     }
 
     // Update is called once per frame
@@ -30,20 +28,49 @@ public class CameraManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.C))
         {
             //swap to next camera on array
-            SwapToCamera(currentCameraIndex + 1);
+            SwapToCamera(currentCameraIndex + 1); //to the +1 camera in array
         }
     }    
 
-    public void SwapToCamera(int cameraIndex)
+    public void SwapToCamera(int newCameraIndex)
     {
         cameras[currentCameraIndex].gameObject.SetActive(false);
 
-        cameraIndex %= cameras.Length;
+        newCameraIndex %= cameras.Length;
 
-        currentCameraIndex = cameraIndex;
+        SetToggleForCamera(newCameraIndex + 1, true);
 
-        cameras[currentCameraIndex].gameObject.SetActive(true);
+        //Debug.Log("currentCamera: " + (currentCameraIndex+1));
+    }
 
-        Debug.Log("currentCamera: " + currentCameraIndex);
+    public void SetToggleForCamera(int camNum, bool value)
+    {
+        cameras[camNum - 1].gameObject.SetActive(value); //swaps the camera in the scene
+
+        if (value) //on
+        {
+            currentCameraIndex = camNum - 1;
+        }
+
+        //Update UI
+        EnableToggleUI(camNum, value);
+        EnableSliderUI(camNum, value);
+    }
+
+    public void SetFOVForCamera(int camNum, float value)
+    {
+        cameras[camNum - 1].GetComponent<Camera>().fieldOfView = value;
+    }
+
+    public void EnableToggleUI(int camNum, bool enable)
+    {
+        //Debug.Log("EnableToggleUI num: " + camNum);
+        uiMain.EnableToggleInteraction(camNum, enable);
+    }
+
+    public void EnableSliderUI(int camNum, bool enable)
+    {
+        //Debug.Log("EnableSliderUI num: " + camNum);
+        uiMain.EnableSliderInteraction(camNum, enable);
     }
 }
