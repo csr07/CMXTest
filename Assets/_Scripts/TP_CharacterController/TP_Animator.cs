@@ -449,6 +449,9 @@ public class TP_Animator : MonoBehaviour
 		{
 			ClearRagdoll();
 		}
+
+		//Reset PlayerStats
+		gameObject.GetComponent<PlayerInfo>().Start();
 	}
 	
 	#endregion

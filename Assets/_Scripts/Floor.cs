@@ -53,7 +53,7 @@ public class Floor : MonoBehaviour
                 }
 
                 //reduce Health Test
-                mPlayer.GetComponent<PlayerInfo>().playerStats.health -= 5;
+                mPlayer.GetComponent<PlayerInfo>().playerStats.health -= 20;
 
             }
         }

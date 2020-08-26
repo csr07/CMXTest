@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEditor;
 
 public class PlayerInfo : MonoBehaviour
 {
@@ -8,7 +9,7 @@ public class PlayerInfo : MonoBehaviour
 
 
     // Start is called before the first frame update
-    void Start()
+    public void Start()
     {
         //(1)Creating an instance from the SO Script
         //playerStats = (PlayerStats)ScriptableObject.CreateInstance("PlayerStats");
@@ -19,6 +20,14 @@ public class PlayerInfo : MonoBehaviour
         //(3)Load the SO, but create a new Instance keeping original
         PlayerStats baseSO = Resources.Load("_ScriptableObjects/PlayerInitialStats") as PlayerStats;
         playerStats = ScriptableObject.Instantiate(baseSO);
+        //playerStats.health = 50;
+
+        //(4)Load the SO, but create a new Instance keeping original, new instance is also saved 
+        //as the current Player Stats for access from UI for example
+        //PlayerStats baseSO = Resources.Load("_ScriptableObjects/PlayerInitialStats") as PlayerStats;
+        //playerStats = ScriptableObject.Instantiate(baseSO);
+        //AssetDatabase.CreateAsset(playerStats, "Assets/Resources/_ScriptableObjects/PlayerGameStats.asset");
+        //playerStats = Resources.Load("_ScriptableObjects/PlayerGameStats") as PlayerStats;
 
         Debug.Log("PlayerStats initial MaxHealth: " + playerStats.maxHealth);
         Debug.Log("PlayerStats initial    health: " + playerStats.health);
@@ -29,5 +38,10 @@ public class PlayerInfo : MonoBehaviour
     void Update()
     {
         Debug.Log("PlayerStats initial    health: " + playerStats.health);
+
+        if (playerStats.health <= 0)
+        {
+            TP_Controller.Instance.Die();
+        }
     }
 }
