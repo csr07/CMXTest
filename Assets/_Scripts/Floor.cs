@@ -44,13 +44,17 @@ public class Floor : MonoBehaviour
                 if (Random.Range(-1.0f, 1.0f) >= 0.0f)
                 {
                     TP_Controller.Instance.randomSide = 1.0f;
-                    Debug.Log("turn RIGHT");
+                    //Debug.Log("turn RIGHT");
                 }
                 else
                 {
                     TP_Controller.Instance.randomSide = -1.0f;
-                    Debug.Log("turn LEFT");
+                    //Debug.Log("turn LEFT");
                 }
+
+                //reduce Health Test
+                mPlayer.GetComponent<PlayerInfo>().playerStats.health -= 5;
+
             }
         }
     }

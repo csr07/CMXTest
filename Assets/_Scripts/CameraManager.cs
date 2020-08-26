@@ -59,7 +59,7 @@ public class CameraManager : MonoBehaviour
 
     public void SetFOVForCamera(int camNum, float value)
     {
-        cameras[camNum - 1].GetComponent<Camera>().fieldOfView = value;
+        cameras[camNum - 1].GetComponent<Camera>().fieldOfView = 100 - value;
     }
 
     public void EnableToggleUI(int camNum, bool enable)
