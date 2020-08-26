@@ -22,8 +22,12 @@ public class Floor : MonoBehaviour
     {
         if (other.gameObject.tag == "Player")
         {
-            //Debug.Log("Player INSIDE");
-            mPlayer.GetComponent<PlayerMove>().horizontalInput = 0.0f;
+            Debug.Log("Player INSIDE");
+            if (mPlayer)
+            {
+                //TP_Controller.Instance.hInput = 0.0f;
+                TP_Controller.Instance.isInSafeArea = true;
+            }
         }
     }
 
@@ -32,7 +36,22 @@ public class Floor : MonoBehaviour
         if (other.gameObject.tag == "Player")
         {
             Debug.Log("Player OUTSIDE");
-            mPlayer.GetComponent<PlayerMove>().horizontalInput = 1.0f;
+            if (mPlayer)
+            {                
+                //TP_Controller.Instance.hInput = 1.0f;
+                TP_Controller.Instance.isInSafeArea = false;
+
+                if (Random.Range(-1.0f, 1.0f) >= 0.0f)
+                {
+                    TP_Controller.Instance.randomSide = 1.0f;
+                    Debug.Log("turn RIGHT");
+                }
+                else
+                {
+                    TP_Controller.Instance.randomSide = -1.0f;
+                    Debug.Log("turn LEFT");
+                }
+            }
         }
     }
 }

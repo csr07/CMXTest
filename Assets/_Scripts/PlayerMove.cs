@@ -6,48 +6,28 @@ public class PlayerMove : MonoBehaviour
 {
     [SerializeField]
     //private float speed = 3.0f;
-    public float horizontalInput;
+    //public float horizontalInput;
 
-    private float forwardSpeed = 7.0f;
-    private float rotateSpeed = 2.0f;
+    //private float forwardSpeed = 7.0f;
+    //private float rotateSpeed = 2.0f;
 
-    private Vector3 velocity;
+    //private Vector3 AIMoveVector;
 
     // Update is called once per frame
     void FixedUpdate()
     {
-        //float hmovement = Input.GetAxis("Horizontal");
-        //float vmovement = Input.GetAxis("Vertical");
-        //GetComponent<Rigidbody>().velocity = new Vector3(hmovement * speed, GetComponent<Rigidbody>().velocity.y, vmovement * speed);
+        if(!TP_Controller.Instance.config_ManualPlayer)
+        { 
+            TP_Controller.Instance.vInput = 1.0f;
 
-        //Quick Android input test
-        //if (Input.touchCount > 0 )
-        //{
-        //    switch (Input.touches[0].phase)
-        //    {
-        //        //case TouchPhase.Began:
-        //        //    prePosX = Input.touches[0].po
-        //        //    break;
-        //        case TouchPhase.Moved:
-
-        //            hmovement = Input.touches[0].deltaPosition.x;
-        //            vmovement = Input.touches[0].deltaPosition.y;
-        //            GetComponent<Rigidbody>().velocity = new Vector3(hmovement * 3, 0.0f, vmovement * 3);
-        //            break;
-        //    }
-        //}
-
-        float v = 1.0f; //forward positive velocity
-        float h = horizontalInput; //simulating value for horizontal movement;
-
-        velocity = new Vector3(0, 0, v);
-
-        velocity = transform.TransformDirection(velocity);
-
-        velocity *= forwardSpeed;
-
-        transform.localPosition += velocity * Time.fixedDeltaTime;
-
-        transform.Rotate(0, h * rotateSpeed, 0);
+            if (TP_Controller.Instance.isInSafeArea)
+            {
+                TP_Controller.Instance.hInput = 0.0f;
+            }
+            else 
+            {                
+                TP_Controller.Instance.hInput = TP_Controller.Instance.randomSide;
+            }
+        }
     }
 }
