@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Threading;
 using UnityEngine;
 
 public class RandomGenerator : MonoBehaviour
@@ -10,7 +11,16 @@ public class RandomGenerator : MonoBehaviour
     void Start()
     {
         randomList = new float[1000000];
-        Generate();
+        Thread t = new Thread(delegate ()
+        {
+            while (true)
+            {
+                Generate();
+                Thread.Sleep(16);
+            }
+        });
+        t.Start();
+        //Generate();
     }
     void Generate()
     {
@@ -27,11 +37,5 @@ public class RandomGenerator : MonoBehaviour
 
         Debug.Log("endTime: " + endTime);
         Debug.Log("elapsedTime: " + elapsedTime);
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 }

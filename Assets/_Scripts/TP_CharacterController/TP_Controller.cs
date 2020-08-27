@@ -78,8 +78,10 @@ public class TP_Controller : MonoBehaviour {
 
 		if (hInput > deadZone || hInput < -deadZone)
 		{
-			//TP_Motor.Instance.MoveVector += new Vector3(hInput, 0, 0);
-			TP_Motor.Instance.RotateVector = new Vector3(hInput, 0, 0);
+			if(config_UseTPCamera)
+				TP_Motor.Instance.MoveVector += new Vector3(hInput, 0, 0);
+			else
+				TP_Motor.Instance.RotateVector = new Vector3(hInput, 0, 0);
 		}
         TP_Animator.Instance.DetermineCurrentMoveDirection();
     }

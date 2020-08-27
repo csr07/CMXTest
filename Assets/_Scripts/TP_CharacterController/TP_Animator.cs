@@ -496,7 +496,7 @@ public class TP_Animator : MonoBehaviour
 			if (TP_Controller.Instance.config_UseTPCamera)
 			{
 				TP_Camera.Instance.TargetLookAt = ragdollPelvis;
-			}
+			}			
 		}				
 	}
 	
